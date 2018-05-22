@@ -15,7 +15,7 @@
     template: "{{ template }}"
     datacenter: "{{ datacenter }}"
     cluster: "{{ cluster }}"
-    folder: "{{ folder }}"
+    folder: "/"
     snapshot_src: "{{ snapshot_src | default(omit, true) }}"
     linked_clone: "{{ linked_clone | default(omit, true) }}"
     notes: "{{ notes | default(omit, true) }}"
