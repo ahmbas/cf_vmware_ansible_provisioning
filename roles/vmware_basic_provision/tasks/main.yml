@@ -1,7 +1,10 @@
 ---
+- name: print env
+  shell: env
+  register: env_result
 - name: print host and user
   debug:
-    msg: "hostname: {{ hostname }} username: {{ username }} password: {{ password }}"
+    msg: "env_result.stdout"
 - name: Provision instances asynchronously
   vmware_guest:
     hostname: "{{ hostname }}"
