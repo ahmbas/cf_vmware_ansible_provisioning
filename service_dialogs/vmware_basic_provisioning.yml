@@ -159,6 +159,7 @@
         default_value: DC01
         values:
         - - DC01
+          - DC01
         values_method:
         values_method_options: {}
         options:
@@ -200,7 +201,10 @@
         required_method_options: {}
         default_value: Cluster01
         values:
-        - - Raleigh
+        - - Cluster01
+          - Cluster01
+        - - VM Network 2
+          - VM Network 2
         values_method:
         values_method_options: {}
         options:
