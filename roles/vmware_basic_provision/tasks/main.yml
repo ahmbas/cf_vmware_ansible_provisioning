@@ -4,7 +4,7 @@
   register: env_result
 - name: print host and user
   debug:
-    msg: "env_result.stdout"
+    msg: "{{env_result.stdout}}"
 - name: Provision instances asynchronously
   vmware_guest:
     hostname: "{{ hostname }}"
