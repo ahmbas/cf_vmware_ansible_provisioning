@@ -1,4 +1,7 @@
 ---
+- name: print host and user
+  debug:
+    msg: "hostname: {{ hostname }} username: {{ username }} password: {{ password }}"
 - name: Provision instances asynchronously
   vmware_guest:
     hostname: "{{ hostname }}"
