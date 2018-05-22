@@ -7,9 +7,9 @@
     msg: "{{env_result.stdout}}"
 - name: Provision instances asynchronously
   vmware_guest:
-    hostname: "{{ hostname }}"
-    username: "{{ username }}"
-    password: "{{ password }}"
+    hostname: vcenter.example.com
+    username: root
+    password: r3dh4t1!
     validate_certs: "{{ validate_certs }}"
     name: "{{ item }}"
     template: "{{ template }}"
