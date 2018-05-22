@@ -74,10 +74,10 @@
         required: true
         required_method:
         required_method_options: {}
-        default_value: RHEL7_BASE_linkedclone
+        default_value: rhel7-vmw
         values:
-        - - RHEL7_BASE_linkedclone
-          - RHEL7_BASE_linkedclone
+        - - rhel7-vmw
+          - rhel7-vmw
         values_method:
         values_method_options: {}
         options:
@@ -156,10 +156,9 @@
         required: true
         required_method:
         required_method_options: {}
-        default_value: Datacenter
+        default_value: DC01
         values:
-        - - Datacenter
-          - Datacenter
+        - - DC01
         values_method:
         values_method_options: {}
         options:
@@ -199,10 +198,9 @@
         required: true
         required_method:
         required_method_options: {}
-        default_value: Raleigh
+        default_value: Cluster01
         values:
         - - Raleigh
-          - Raleigh
         values_method:
         values_method_options: {}
         options:
@@ -242,7 +240,7 @@
         required: true
         required_method:
         required_method_options: {}
-        default_value: VM Network 2
+        default_value: VM Network
         values:
         - - VM Network
           - VM Network
