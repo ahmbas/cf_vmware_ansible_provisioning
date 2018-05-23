@@ -4,6 +4,7 @@
   vars:
   - auto_commit: True
   - manageiq_validate_certs: False
+  - templates: []
   roles:
   - syncrou.manageiq-automate
   tasks:
@@ -24,10 +25,16 @@
     - name: print workspace
       debug:
         msg: "{{workspace}}"
+
+    - name: create templates lists
+      set_fact:
+        templates: "{{templates + [{item: item}]}}"
+      with_items: "{{template_facts.virtual_machines.keys()}}"
+
     - name: "Set a State Var"
       manageiq_automate:
         workspace: "{{ workspace }}"
         set_state_var:
           attribute: "dropdown_list_1_1"
-          value: "{{template_facts.virtual_machines.keys()}}"
+          value: "{{templates}}"
       register: workspace
