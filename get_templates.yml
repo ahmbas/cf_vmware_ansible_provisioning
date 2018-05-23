@@ -39,7 +39,7 @@
         set_attributes:
           object: "root"
           attributes:
-            dropdown_list_1_1: "{{template_dialog}}"
+            dialog_dropdown_list_1_1: "{{template_dialog}}"
       register: workspace
 
     - name: print workspace
