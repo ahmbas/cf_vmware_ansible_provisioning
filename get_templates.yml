@@ -40,7 +40,7 @@
       manageiq_automate:
         workspace: "{{ workspace }}"
         set_attributes:
-          object: "workspace"
+          object: "root"
           attributes:
             dialog_dropdown_list_1_1: "{{template_dialog}}"
       register: workspace
@@ -48,3 +48,20 @@
     - name: print workspace
       debug:
         msg: "{{workspace}}"
+
+- hosts: localhost
+  gather_facts: no
+  connection: local
+  vars:
+  - auto_commit: True
+  - manageiq_validate_certs: False
+  - templates: []
+  - template_dialog: {}
+  roles:
+  - syncrou.manageiq-automate
+  tasks:
+    - name: "Get the full list of Object Attribute Names"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        get_object_attribute_names:
+          object: "root"
