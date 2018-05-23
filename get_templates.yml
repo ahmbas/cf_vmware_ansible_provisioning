@@ -40,7 +40,7 @@
       manageiq_automate:
         workspace: "{{ workspace }}"
         set_attributes:
-          object: "object"
+          object: "workspace"
           attributes:
             dialog_dropdown_list_1_1: "{{template_dialog}}"
       register: workspace
