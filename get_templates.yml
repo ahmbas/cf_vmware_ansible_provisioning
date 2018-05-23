@@ -65,3 +65,7 @@
         workspace: "{{ workspace }}"
         get_object_attribute_names:
           object: "root"
+      register: result
+    - name: print workspce
+      debug:
+        var: "{{resutl}}"
