@@ -22,10 +22,6 @@
       debug:
        msg: "{{template_facts.virtual_machines.keys()}}"
 
-    - name: print workspace
-      debug:
-        msg: "{{workspace}}"
-
     - name: create templates lists
       set_fact:
         templates: "{{templates + [{item: item}]}}"
@@ -34,7 +30,12 @@
     - name: "Set a State Var"
       manageiq_automate:
         workspace: "{{ workspace }}"
-        set_state_var:
-          attribute: "dropdown_list_1_1"
-          value: "{{templates}}"
+        set_attributes:
+          object: "root"
+          attributes:
+            dropdown_list_1_1: "{{templates}}"
       register: workspace
+
+    - name: print workspace
+      debug:
+        msg: "{{workspace}}"
