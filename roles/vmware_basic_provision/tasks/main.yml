@@ -1,15 +1,20 @@
 ---
+- name: print env
+  shell: env
+  register: env_result
+- name: print host and user
+  debug:
+    msg: "{{env_result.stdout}}"
 - name: Provision instances asynchronously
   vmware_guest:
-    hostname: "{{ hostname }}"
-    username: "{{ username }}"
-    password: "{{ password }}"
+    hostname: vcenter.example.com
+    username: root
+    password: r3dh4t1!
     validate_certs: "{{ validate_certs }}"
     name: "{{ item }}"
     template: "{{ template }}"
     datacenter: "{{ datacenter }}"
     cluster: "{{ cluster }}"
-    folder: "{{ folder }}"
     snapshot_src: "{{ snapshot_src | default(omit, true) }}"
     linked_clone: "{{ linked_clone | default(omit, true) }}"
     notes: "{{ notes | default(omit, true) }}"
