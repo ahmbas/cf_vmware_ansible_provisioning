@@ -55,11 +55,9 @@
   vars:
   - auto_commit: True
   - manageiq_validate_certs: False
-  - templates: []
-  - template_dialog: {}
   roles:
   - syncrou.manageiq-automate
   tasks:
     - name: print workspce
       debug:
-        var: "{{ workspace }}"
+        msg: "{{ workspace }}"
