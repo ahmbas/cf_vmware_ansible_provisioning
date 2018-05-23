@@ -32,6 +32,9 @@
       set_fact:
         template_dialog:
           values: "{{templates}}"
+          data_type: string
+          sort_by: value
+          default_value: 123
 
     - name: "Set a State Var"
       manageiq_automate:
