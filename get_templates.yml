@@ -41,7 +41,7 @@
         workspace: "{{ workspace }}"
         set_attribute:
           object: "root"
-          attributes: dialog_dropdown_list_1_1
+          attribute: dialog_dropdown_list_1_1
           value : "{{template_dialog}}"
       register: workspace
 
@@ -60,12 +60,6 @@
   roles:
   - syncrou.manageiq-automate
   tasks:
-    - name: "Get the full list of Object Attribute Names"
-      manageiq_automate:
-        workspace: "{{ workspace }}"
-        get_object_attribute_names:
-          object: "root"
-      register: result
     - name: print workspce
       debug:
         var: "{{ workspace }}"
