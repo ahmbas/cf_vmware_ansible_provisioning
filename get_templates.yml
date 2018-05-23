@@ -7,19 +7,19 @@
   roles:
   - syncrou.manageiq-automate
   tasks:
-    - name: Gather only registered virtual machine templates
-      vmware_vm_facts:
-        hostname: vcenter-aa11.rhpds.opentlc.com
-        username: root
-        password: r3dh4t1!
-        vm_type: template
-        validate_certs: false
-      delegate_to: localhost
-      register: template_facts
-
-    - name: print gather_facts
-      debug:
-       msg: "{{template_facts.virtual_machines.keys()}}"
+    # - name: Gather only registered virtual machine templates
+    #   vmware_vm_facts:
+    #     hostname: vcenter-aa11.rhpds.opentlc.com
+    #     username: root
+    #     password: r3dh4t1!
+    #     vm_type: template
+    #     validate_certs: false
+    #   delegate_to: localhost
+    #   register: template_facts
+    # 
+    # - name: print gather_facts
+    #   debug:
+    #    msg: "{{template_facts.virtual_machines.keys()}}"
 
     - name: print workspace
       debug:
