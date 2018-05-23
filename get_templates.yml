@@ -49,6 +49,18 @@
       debug:
         msg: "{{workspace}}"
 
+    - name: print
+      debug:
+        msg: hostvars[inventory_hostname]
+
+    - name: "Set a State Var"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        set_state_var:
+          attribute: "job_id"
+          value: "xyz"
+      register: workspace
+
 - hosts: localhost
   gather_facts: no
   connection: local
