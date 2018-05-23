@@ -39,10 +39,10 @@
     - name: "Set a State Var"
       manageiq_automate:
         workspace: "{{ workspace }}"
-        set_attributes:
+        set_attribute:
           object: "root"
-          attributes:
-            dialog_dropdown_list_1_1: "{{template_dialog}}"
+          attributes: dialog_dropdown_list_1_1
+          value : "{{template_dialog}}"
       register: workspace
 
     - name: print workspace
@@ -68,4 +68,4 @@
       register: result
     - name: print workspce
       debug:
-        var: "{{result}}"
+        var: "{{ workspace }}"
