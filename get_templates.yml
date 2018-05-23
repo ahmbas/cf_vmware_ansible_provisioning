@@ -3,6 +3,8 @@
   connection: local
   vars:
   - auto_commit: True
+  - manageiq_connection:
+      manageiq_validate_certs: false
   roles:
   - syncrou.manageiq-automate
   tasks:
