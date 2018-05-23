@@ -16,8 +16,8 @@
 
 - name: Perform tasks on instances
   hosts: vmware_hosts
-  #become: true
-  #gather_facts: false
-
+  vars:
+    ansible_ssh_user: root
+    ansible_ssh_pass: r3dh4t1!
   roles:
     - role: vmware_runonce
