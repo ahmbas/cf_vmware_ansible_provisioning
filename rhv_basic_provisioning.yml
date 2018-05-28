@@ -17,6 +17,6 @@
   hosts: rhv_hosts
   vars:
     ansible_ssh_user: root
-    ansible_ssh_pass: 123
+    ansible_ssh_pass: "123"
   roles:
     - role: rhv_runonce
