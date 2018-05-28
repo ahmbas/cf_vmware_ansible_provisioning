@@ -1,0 +1,21 @@
+---
+- name: Generating VM name(s)
+  set_fact:
+    vm_names: "{{ vm_names + [ item ] }}"
+  with_sequence: start=1 end="{{ count }}" format="{{ name_format }}"
+
+- name: Generating VM IP(s)
+  set_fact:
+    vm_ips: "{{ vm_ips + [ '192.168.1.%s' % (index+20) | string ] }}"
+  loop: "{{vm_names}}"
+  loop_control:
+    index_var: index
+
+- name: Log item.instance.ipv4
+  debug:
+    var: "{{item.0}}"
+  with_together:
+    - "{{vm_names}}"
+    - "{{vm_ips}}"
+
+# Add your own plays here

@@ -51,7 +51,7 @@
 
     - name: print
       debug:
-        msg: hostvars[inventory_hostname]
+        msg: "{{hostvars[inventory_hostname]}}"
 
     - name: "Set a State Var"
       manageiq_automate:
@@ -60,16 +60,3 @@
           attribute: "job_id"
           value: "xyz"
       register: workspace
-
-- hosts: localhost
-  gather_facts: no
-  connection: local
-  vars:
-  - auto_commit: True
-  - manageiq_validate_certs: False
-  roles:
-  - syncrou.manageiq-automate
-  tasks:
-    - name: print workspce
-      debug:
-        msg: "{{ workspace }}"

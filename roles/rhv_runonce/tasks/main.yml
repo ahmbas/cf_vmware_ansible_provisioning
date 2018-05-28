@@ -1,0 +1,13 @@
+---
+- name: SSH into instance
+  shell: cat /etc/resolv.conf
+  register: ssh_output
+
+- name: Log ssh_output
+  debug:
+    var: ssh_output
+
+- name: install ovirt guest agent
+  yum:
+    name: ovirt-guest-agent-common
+    state: present

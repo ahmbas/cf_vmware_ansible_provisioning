@@ -1,0 +1,9 @@
+- name: start ovirt agent
+  service:
+    name: ovirt-guest-agent
+    state: enabled
+
+- name: start ovirt agent
+  service:
+    name: ovirt-guest-agent
+    state: started

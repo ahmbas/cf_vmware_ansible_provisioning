@@ -3,4 +3,7 @@
   tasks:
     - name: print
       debug:
-        msg: Working
+        msg: "192.160.1.{{index + 10}}"
+      loop: [1,2,3]
+      loop_control:
+        index_var: index

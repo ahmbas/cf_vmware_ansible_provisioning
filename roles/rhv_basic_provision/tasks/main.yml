@@ -1,0 +1,57 @@
+---
+- name: print env
+  shell: env
+  register: env_result
+- name: print host and user
+  debug:
+    msg: "{{vm_names}}"
+
+
+- name: Run VM with cloud init
+  ovirt_vms:
+    auth: '{{ ovirt_auth }}'
+    state: running
+    name: "{{ item.0 }}"
+    template: "{{ template }}"
+    cluster: "{{ cluster }}"
+    storage_domain: "{{storage}}"
+    cloud_init:
+      nic_boot_protocol: static
+      nic_ip_address: "{{item.1}}"
+      nic_netmask: "255.255.0.0"
+      nic_gateway: "192.168.0.2"
+      dns_servers: "192.168.0.1"
+      nic_name: eth0
+      nic_on_boot: true
+      host_name: example.com
+      user_name: root
+      root_password: "123"
+  with_together:
+    - "{{vm_names}}"
+    - "{{vm_ips}}"
+  register: rhv_created_vms_async
+  async: "{{ async_wait }}"
+  poll: "{{ async_poll }}"
+
+
+- name: Wait for asynchronous job to complete
+  async_status: jid={{ item.ansible_job_id }}
+  register: rhv_created_vms
+  until: rhv_created_vms.finished
+  retries: "{{ async_retries }}"
+  with_items: "{{ rhv_created_vms_async.results }}"
+
+- name: print vms
+  debug:
+    msg: "{{rhv_created_vms_async}}"
+
+- name: "Add new vm ip addresses to rhv_hosts group"
+  add_host:
+    name: "{{ item }}"
+    groups: rhv_hosts
+  with_items: "{{ vm_ips }}"
+
+# - name: wait for ssh to start
+#   wait_for:
+#     port: 22
+#     delay: 10
