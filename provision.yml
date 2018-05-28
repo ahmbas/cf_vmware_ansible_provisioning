@@ -1,0 +1,10 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Start provisioning
+      debug:
+        msg: "starting"
+    - include: rhv_basic_provisioning.yml
+      when: variable1| lower | search("rhv")
+    - include: vmware_basic_provisioning.yml
+      when: variable1| lower | search("vsphere")
