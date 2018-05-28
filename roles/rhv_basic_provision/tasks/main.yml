@@ -43,7 +43,7 @@
 
 - name: print vms
   debug:
-    msg: "{{rhv_created_vms_async}}"
+    msg: "{{rhv_created_vms}}"
 
 - name: "Add new vm ip addresses to rhv_hosts group"
   add_host:

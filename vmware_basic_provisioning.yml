@@ -1,8 +1,6 @@
----
 - name: vmware_basic_provisioning
   hosts: localhost
   gather_facts: false
-
   roles:
     - role: vmware_preprovision
       when: manageiq is defined

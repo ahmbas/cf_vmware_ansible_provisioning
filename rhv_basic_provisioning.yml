@@ -1,7 +1,13 @@
----
 - name: rhv_basic_provisioning
   hosts: localhost
   gather_facts: false
+  pre_tasks:
+    - name: authenticate to enging
+      ovirt_auth:
+        username: '{{ ovirt_user }}'
+        password: '{{ ovirt_pass }}'
+        url: https://{{ ovirt_host }}/ovirt-engine/api
+        insecure: true
   roles:
     - role: rhv_preprovision
       when: manageiq is defined
