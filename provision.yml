@@ -1,27 +1,7 @@
 - hosts: localhost
   connection: local
-  vars:
-    vm_names: ["vm1"]
-    template: cfmer-template
-    datacenter: CoolDataCenter
-    cluster: TrustedCluster
-    network_0_vlan: ovirtmgmt
-    ovirt_user: "admin@internal"
-    ovirt_pass: "r3dh4t1!"
-    ovirt_host:  "rhvm-aa11.rhpds.opentlc.com"
-    provider: 'RHV'
 
 - import_playbook: rhv_basic_provisioning.yml
-  vars:
-    vm_names: ["vm1"]
-    template: cfmer-template
-    datacenter: CoolDataCenter
-    cluster: TrustedCluster
-    network_0_vlan: ovirtmgmt
-    ovirt_user: "admin@internal"
-    ovirt_pass: "r3dh4t1!"
-    ovirt_host:  "rhvm-aa11.rhpds.opentlc.com"
-    provider: 'RHV'
   when: provider| lower | search("rhv")
 - include: vmware_basic_provisioning.yml
   when: provider| lower | search("vsphere")
